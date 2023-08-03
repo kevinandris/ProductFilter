@@ -35,16 +35,19 @@ const ProductList = () => {
 
                 <div className="product-container">
                     <div className="products container --grid-25 --py2">
-                        {filteredProducts.map((product) => {
-                            const { id, title, price, img } = product;
-
-                            {/* MAPPING MUST HAVE A key of item's id */}
-                            return (
-                                <div key={id}>
-                                    <Product title={title} img={img} price={price}/>
-                                </div>
-                            );
-                        })}
+                        {filteredProducts.length === 0 ? (
+                            <h3>No Product found!!!</h3>
+                        ) : (
+                             filteredProducts.map((product) => {
+                                 const { id, title, price, img } = product;
+                                 {/* MAPPING MUST HAVE A key of item's id */}
+                                 return (
+                                     <div key={id}>
+                                         <Product title={title} img={img} price={price}/>
+                                     </div>
+                                 );
+                             })
+                        )}
                     </div>
                 </div>
             </div>   
