@@ -1,13 +1,27 @@
-import React from 'react'
-import './Categories.css'
+// ! child class
+import React from 'react';
+import './Categories.css';
 
-const Categories = () => {
+const capitalize = (word) => {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+}
+
+const Categories = ({ categories, filterItems }) => {
   return (
     <div className="--flex-center">
-      <button 
-        type='button'
-        className='btn --btn --btn-secondary'>All
-      </button>
+      {categories.map((category, index) => {
+        return (
+          <button 
+            type='button'
+            className='btn --btn --btn-secondary'
+            key={index}
+            onClick={() => filterItems(category)}
+            >
+              {/* {category.toUpperCase()} */}
+              {capitalize(category)}
+          </button>
+        )
+      })}
     </div>
   )
 }
